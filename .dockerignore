@@ -1,0 +1,44 @@
+# VCS
+.git/
+.gitignore
+
+# Secrets / env
+.env
+.env.*
+!.env.example
+
+# Python cache / bytecode
+__pycache__/
+*.py[codz]
+*$py.class
+
+# Virtual envs
+.venv/
+venv/
+env/
+ENV/
+
+# Tests / coverage 
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# IDE/editor
+.vscode/
+.idea/
+*.iml
+
+# OS junk / logs
+.DS_Store
+Thumbs.db
+*.log
+
