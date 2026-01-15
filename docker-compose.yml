@@ -4,7 +4,3 @@ services:
     container_name: send_email_container
     ports:
       - "8000:8000"
-    environment:
-
-      SMTP_USER: "78ca0cacf9f1f5"
-      SMTP_PASSWORD: "48ab754168571c"
