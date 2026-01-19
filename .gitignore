@@ -1,14 +1,14 @@
-# --- Secrets / env files ---
+
 .env
 .env.*
 !.env.example
 
-# --- Python bytecode / cache ---
+
 __pycache__/
 *.py[codz]
 *$py.class
 
-# --- Virtual environments ---
+
 .venv/
 venv/
 env/
@@ -16,7 +16,7 @@ ENV/
 env.bak/
 venv.bak/
 
-# --- Unit tests / coverage ---
+
 .pytest_cache/
 .coverage
 .coverage.*
@@ -24,13 +24,13 @@ htmlcov/
 .tox/
 .nox/
 
-# --- Linters / type checkers ---
+
 .mypy_cache/
 .ruff_cache/
 .pyre/
 .pytype/
 
-# --- Build / packaging ---
+
 build/
 dist/
 *.egg-info/
@@ -38,14 +38,13 @@ dist/
 wheels/
 pip-wheel-metadata/
 
-# --- Logs ---
+
 *.log
 
-# --- IDE/editor ---
+
 .vscode/
 .idea/
 *.iml
 
-# --- OS junk ---
 .DS_Store
 Thumbs.db

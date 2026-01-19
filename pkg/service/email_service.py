@@ -6,6 +6,7 @@ from pkg.dto.email_dto import EmailDTO
 from pkg.utility.check_email import email_reserve, email_return
 
 class EmailService:
+    
     def __init__(self):
         self.smtp_server = ConnectionSMTP.SMTP_SERVER_NAME
         self.smtp_port = ConnectionSMTP.SMTP_PORT
@@ -16,7 +17,6 @@ class EmailService:
         if not all([self.smtp_server, self.smtp_port, self.smtp_user, self.smtp_password,self.sender_email]):
             raise ValueError("Configurazione SMTP incompleta!")
 
-    
     
     def process_request(self, request: EmailDTO) -> dict:
         ALLOWED = {"RESERVE", "RETURN"}
@@ -47,9 +47,6 @@ class EmailService:
             message["To"] = recipient_email
             message.attach(MIMEText(body, 'plain'))
             
-            """ # prima di with smtplib.SMTP(...)
-            print("SMTP_SERVER_NAME =", {repr(self.smtp_server)})
-            print("SMTP_PORT =", {self.smtp_port}) """
 
             with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
                 server.starttls()
