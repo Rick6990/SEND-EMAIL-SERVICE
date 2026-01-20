@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv(override=True)
+load_dotenv(override=True) # override= true: Serve per sovrascrivere i valori all'interno di .env
 
 class ConnectionSMTP:
     SMTP_SERVER_NAME = os.getenv("SMTP_SERVER_NAME")

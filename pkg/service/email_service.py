@@ -2,8 +2,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pkg.config.mailtrap_config import ConnectionSMTP
-from pkg.dto.email_dto import EmailDTO
-from pkg.utility.check_email import email_reserve, email_return
+#from pkg.dto.email_dto import EmailDTO
+#from pkg.utility.check_email import email_reserve, email_return
 
 class EmailService:
     
@@ -17,27 +17,6 @@ class EmailService:
         if not all([self.smtp_server, self.smtp_port, self.smtp_user, self.smtp_password,self.sender_email]):
             raise ValueError("Configurazione SMTP incompleta!")
 
-    
-    def process_request(self, request: EmailDTO) -> dict:
-        ALLOWED = {"RESERVE", "RETURN"}
-        if request.emailType.strip().upper() == "RESERVE":
-            subject, body = email_reserve(request.utente)
-            
-        elif request.emailType.strip().upper() == "RETURN":
-            subject, body = email_return(request.utente)
-            
-        elif request.emailType.strip().upper() not in ALLOWED:
-            return {'success': False}
-        
-        else:
-            return None
-        
-        
-        return self.send_email(
-            recipient_email=str(request.recipient_email),
-            subject=subject,
-            body=body
-        )
 
     def send_email(self, recipient_email: str, subject: str, body: str) -> dict:
         try:
@@ -53,11 +32,8 @@ class EmailService:
                 server.login(self.smtp_user, self.smtp_password)
                 server.sendmail(self.sender_email, recipient_email, message.as_string())
             
-            return {
-                'success': True,
-                'message': f'Email inviata a {recipient_email}',
-                'error': None
-            }
+            return {f'Email inviata a {recipient_email}',}
+        
         except smtplib.SMTPAuthenticationError as e:
             return {
                 'success': False,
